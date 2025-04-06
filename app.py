@@ -1,51 +1,42 @@
 
 import streamlit as st
 
-st.set_page_config(page_title="Simulador ROI - ITA Frotas", layout="centered")
+st.set_page_config(page_title="Simulador ROI - ITA Frotas", layout="wide")
 
-# Estilo ITA: fundo preto, texto branco, destaque amarelo
+# Estilo CSS reforçado
 st.markdown("""
 <style>
-body {
-    background-color: #000000;
-    color: #FFFFFF;
+html, body, [class*="css"] {
+    background-color: #000000 !important;
+    color: white !important;
+    font-family: 'Arial', sans-serif !important;
 }
-.css-18e3th9 {
-    background-color: #000000;
+.css-1d391kg, .css-1v0mbdj {
+    background-color: #000000 !important;
 }
-.css-1d391kg {
-    background-color: #000000;
-}
-h1, h2, h3, h4, h5, h6, p {
-    color: #FFFFFF;
-}
-.title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 0;
-    color: white;
-}
-.subtitle {
-    font-size: 14px;
-    color: #cccccc;
-    margin-bottom: 20px;
-}
-.box {
-    background-color: #111111;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #FFD700;
-    margin-top: 20px;
+h1, h2, h3, h4, h5, h6, p, label {
+    color: white !important;
 }
 .stSlider > div[data-baseweb="slider"] > div {
-    background: #FFD700;
+    background: #FFD700 !important;
+}
+.stSlider > div[data-baseweb="slider"] span {
+    background-color: #FFD700 !important;
+}
+div.stButton > button {
+    background-color: #FFD700 !important;
+    color: black !important;
+    border: none;
+}
+div.stButton > button:hover {
+    background-color: #e6c200 !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
 st.image("logo_ita.png", width=160)
-st.markdown('<p class="title">Simulador de ROI - Frota Corporativa</p>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle">Versão institucional • Desenvolvido para ITA Frotas</p>', unsafe_allow_html=True)
+st.markdown('<h1>Simulador de ROI - Frota Corporativa</h1>', unsafe_allow_html=True)
+st.markdown('<p style="color: #ccc;">Versão institucional • Desenvolvido para ITA Frotas</p>', unsafe_allow_html=True)
 st.markdown("---")
 
 def calcular_roi(valor_fipe, desconto, receita_mensal, juros_mensal, prazo, desvalorizacao, tributos, custo_op, custo_adm, custo_buro, qtd):
@@ -91,6 +82,7 @@ if st.button("Calcular ROI"):
     lucro, roi = calcular_roi(valor_fipe, desconto, receita, juros, prazo, desvalorizacao, tributos,
                               custo_op, custo_adm, custo_buro, qtd)
     st.markdown(
-        f'<div class="box"><h4>Resultado</h4><b>Lucro líquido:</b> R$ {lucro:,.2f}<br><b>ROI líquido:</b> {roi:.2f}%</div>',
+        f'<div style="border: 2px solid #FFD700; padding: 20px; border-radius: 10px; margin-top: 20px;">'
+        f"<h4 style='color:#FFD700;'>Resultado</h4><b>Lucro líquido:</b> R$ {lucro:,.2f}<br><b>ROI líquido:</b> {roi:.2f}%</div>",
         unsafe_allow_html=True
     )
