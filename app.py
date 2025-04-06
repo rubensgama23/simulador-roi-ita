@@ -3,12 +3,43 @@ import streamlit as st
 
 st.set_page_config(page_title="Simulador ROI - ITA Frotas", layout="centered")
 
-# CSS corporativo
+# Estilo ITA: fundo preto, texto branco, destaque amarelo
 st.markdown("""
 <style>
-    .title { font-size: 28px; font-weight: bold; margin-bottom: 0; }
-    .subtitle { font-size: 14px; color: gray; margin-bottom: 20px; }
-    .box { background-color: #f5f5f5; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin-top: 20px; }
+body {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.css-18e3th9 {
+    background-color: #000000;
+}
+.css-1d391kg {
+    background-color: #000000;
+}
+h1, h2, h3, h4, h5, h6, p {
+    color: #FFFFFF;
+}
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: white;
+}
+.subtitle {
+    font-size: 14px;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+.box {
+    background-color: #111111;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #FFD700;
+    margin-top: 20px;
+}
+.stSlider > div[data-baseweb="slider"] > div {
+    background: #FFD700;
+}
 </style>
 """, unsafe_allow_html=True)
 
