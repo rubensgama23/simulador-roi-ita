@@ -3,40 +3,9 @@ import streamlit as st
 
 st.set_page_config(page_title="Simulador ROI - ITA Frotas", layout="wide")
 
-# Estilo CSS reforçado
-st.markdown("""
-<style>
-html, body, [class*="css"] {
-    background-color: #000000 !important;
-    color: white !important;
-    font-family: 'Arial', sans-serif !important;
-}
-.css-1d391kg, .css-1v0mbdj {
-    background-color: #000000 !important;
-}
-h1, h2, h3, h4, h5, h6, p, label {
-    color: white !important;
-}
-.stSlider > div[data-baseweb="slider"] > div {
-    background: #FFD700 !important;
-}
-.stSlider > div[data-baseweb="slider"] span {
-    background-color: #FFD700 !important;
-}
-div.stButton > button {
-    background-color: #FFD700 !important;
-    color: black !important;
-    border: none;
-}
-div.stButton > button:hover {
-    background-color: #e6c200 !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
 st.image("logo_ita.png", width=160)
-st.markdown('<h1>Simulador de ROI - Frota Corporativa</h1>', unsafe_allow_html=True)
-st.markdown('<p style="color: #ccc;">Versão institucional • Desenvolvido para ITA Frotas</p>', unsafe_allow_html=True)
+st.title("Simulador de ROI - Frota Corporativa")
+st.caption("Versão institucional • Desenvolvido para ITA Frotas")
 st.markdown("---")
 
 def calcular_roi(valor_fipe, desconto, receita_mensal, juros_mensal, prazo, desvalorizacao, tributos, custo_op, custo_adm, custo_buro, qtd):
@@ -81,8 +50,6 @@ receita = st.number_input("Receita mensal por veículo (R$)", value=3000)
 if st.button("Calcular ROI"):
     lucro, roi = calcular_roi(valor_fipe, desconto, receita, juros, prazo, desvalorizacao, tributos,
                               custo_op, custo_adm, custo_buro, qtd)
-    st.markdown(
-        f'<div style="border: 2px solid #FFD700; padding: 20px; border-radius: 10px; margin-top: 20px;">'
-        f"<h4 style='color:#FFD700;'>Resultado</h4><b>Lucro líquido:</b> R$ {lucro:,.2f}<br><b>ROI líquido:</b> {roi:.2f}%</div>",
-        unsafe_allow_html=True
-    )
+    st.subheader("Resultado")
+    st.success(f"Lucro líquido: R$ {lucro:,.2f}")
+    st.success(f"ROI líquido: {roi:.2f}%")
